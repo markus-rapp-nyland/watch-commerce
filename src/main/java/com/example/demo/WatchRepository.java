@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 @Repository
 public class WatchRepository {
@@ -17,7 +18,8 @@ public class WatchRepository {
     // This would usually be a database call, but using map for simplicity
     public List<Watch> getWatchesFromIds(List<String> ids) {
         return ids.stream()
-                .map(watchMap::get)
+                .flatMap(key -> Stream
+                        .ofNullable(watchMap.get(key)))
                 .toList();
     }
 }
