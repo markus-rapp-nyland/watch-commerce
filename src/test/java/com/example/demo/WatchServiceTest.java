@@ -18,4 +18,11 @@ class WatchServiceTest {
 
         assertEquals(180, result);
     }
+
+    @Test
+    void single_rolex_discount() {
+        int result = service.sumCheckout(List.of("001", "001", "001", "001"));
+
+        assertEquals(300, result);
+    }
 }

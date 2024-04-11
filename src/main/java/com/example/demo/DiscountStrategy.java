@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 public interface DiscountStrategy {
-    int applyDiscount(int standardUnitPrice);
+    int applyDiscount(List<Watch> watchOrder);
 }

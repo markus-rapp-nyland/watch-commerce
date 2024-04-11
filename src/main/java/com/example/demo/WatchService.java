@@ -3,7 +3,6 @@ package com.example.demo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Service
 public class WatchService {
@@ -18,13 +17,11 @@ public class WatchService {
 
     public int sumCheckout(List<String> itemIds) {
         List<Watch> watches = watchRepository.getWatchesFromIds(itemIds);
-        List<Discount> discounts = discountService.getDiscounts(watches);
+        int discount = discountService.getDiscounts(watches);
 
-        return IntStream
-                .concat(watches.stream()
-                                .mapToInt(Watch::unitPrice),
-                        discounts.stream()
-                                .mapToInt(discount -> discount.price() * -1))
-                .sum();
+        int regularPrice = watches.stream()
+                .mapToInt(Watch::unitPrice).sum();
+
+        return regularPrice - discount;
     }
 }
