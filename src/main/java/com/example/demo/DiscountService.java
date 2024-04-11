@@ -8,9 +8,10 @@ import java.util.stream.IntStream;
 @Service
 public class DiscountService {
 
-    public int getDiscounts(List<Watch> watches) {
+    public int getDiscount(List<Watch> watches) {
         return IntStream.of(
-                new RolexDiscountStrategy().applyDiscount(watches)
+                new RolexDiscountStrategy().applyDiscount(watches),
+                new MichaelCorsDiscountStrategy().applyDiscount(watches)
         ).sum();
     }
 }

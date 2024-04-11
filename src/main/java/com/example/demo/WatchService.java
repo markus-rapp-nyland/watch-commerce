@@ -17,7 +17,7 @@ public class WatchService {
 
     public int sumCheckout(List<String> itemIds) {
         List<Watch> watches = watchRepository.getWatchesFromIds(itemIds);
-        int discount = discountService.getDiscounts(watches);
+        int discount = discountService.getDiscount(watches);
 
         int regularPrice = watches.stream()
                 .mapToInt(Watch::unitPrice).sum();
