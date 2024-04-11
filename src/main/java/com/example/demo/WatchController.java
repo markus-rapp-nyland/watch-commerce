@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class WatchController {
     }
 
     @PostMapping(path = "checkout")
-    public PriceResponse checkout(List<String> itemIds) {
+    public PriceResponse checkout(@RequestBody List<String> itemIds) {
         return new PriceResponse(watchService.sumCheckout(itemIds));
     }
 }
