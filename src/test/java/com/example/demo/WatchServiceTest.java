@@ -9,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class WatchServiceTest {
 
     private final WatchRepository repo = new WatchRepository();
-    private final WatchService service = new WatchService(repo);
+    private final DiscountService discountService = new DiscountService();
+    private final WatchService service = new WatchService(repo, discountService);
 
     @Test
     void calculate_price_for_single_items() {
